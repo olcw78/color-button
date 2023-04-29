@@ -4,7 +4,7 @@ interface ButtonProps extends Pick<HTMLButtonElement, "disabled"> {
   isClicked: boolean;
 }
 
-const Button = styled.button<ButtonProps>`
+const ColorButton = styled.button<ButtonProps>`
   background-color: ${(p) => decideBackgroundColor(p)};
   opacity: ${(p) => (p.disabled ? 0.5 : 1)};
 
@@ -20,7 +20,7 @@ const Button = styled.button<ButtonProps>`
     color: white;
   }
 `;
-export default Button;
+export default ColorButton;
 
 const decideBackgroundColor = (
   p: Pick<ButtonProps, "isClicked" | "disabled">

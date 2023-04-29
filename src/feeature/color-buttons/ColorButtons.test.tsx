@@ -1,10 +1,9 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import App from "./App";
-import { replaceCamelCaseWithSpaces } from "./util/string";
+import ColorButtons from "./ColorButtons";
 
 describe("init", () => {
   test("Initial condition", () => {
-    render(<App />);
+    render(<ColorButtons />);
 
     const button = screen.getByRole("button", {
       name: /Change to midnight blue/i
@@ -19,7 +18,7 @@ describe("init", () => {
 
 describe("button", function () {
   test("Button has correct initial color", () => {
-    render(<App />);
+    render(<ColorButtons />);
 
     const button = screen.getByRole("button", {
       name: /Change to midnight blue/i
@@ -30,7 +29,7 @@ describe("button", function () {
   });
 
   test("Button turns midnight blue when clicked", () => {
-    render(<App />);
+    render(<ColorButtons />);
 
     const button = screen.getByRole("button", {
       name: /Change to midnight blue/i
@@ -45,7 +44,7 @@ describe("button", function () {
   });
 
   test("Disabled button is gray and reverts to medium violet red", () => {
-    render(<App />);
+    render(<ColorButtons />);
 
     const button = screen.getByRole("button", {
       name: /Change to midnight blue/i
@@ -64,7 +63,7 @@ describe("button", function () {
   });
 
   test("Clicked disabled button is gray and reverts to midnight blue", () => {
-    render(<App />);
+    render(<ColorButtons />);
 
     const button = screen.getByRole("button", {
       name: /Change to midnight blue/i
@@ -86,14 +85,14 @@ describe("button", function () {
 
 describe("checkbox", function () {
   test("Checkbox is unchecked initially", () => {
-    render(<App />);
+    render(<ColorButtons />);
 
     const checkbox = screen.getByRole("checkbox", { name: "Disable button" });
     expect(checkbox).not.toBeChecked();
   });
 
   test("Checkbox is checked when clicked", () => {
-    render(<App />);
+    render(<ColorButtons />);
 
     const button = screen.getByRole("button", {
       name: /Change to midnight blue/i
@@ -107,7 +106,7 @@ describe("checkbox", function () {
   });
 
   test("Checkbox is re-enabled when double clicked", () => {
-    render(<App />);
+    render(<ColorButtons />);
 
     const button = screen.getByRole("button", {
       name: /Change to midnight blue/i
@@ -123,21 +122,5 @@ describe("checkbox", function () {
     fireEvent.click(checkbox);
     expect(button).toBeEnabled();
     expect(checkbox).not.toBeChecked();
-  });
-});
-
-describe("spaces before camel-case capital letters", () => {
-  test("works for no inner capital letters", () => {
-    expect(replaceCamelCaseWithSpaces("Red")).toBe("Red");
-  });
-
-  test("works for one inner capital letters", () => {
-    expect(replaceCamelCaseWithSpaces("MidnightBlue")).toBe("Midnight Blue");
-  });
-
-  test("works for multiple inner capital letters", () => {
-    expect(replaceCamelCaseWithSpaces("MediumVioletRed")).toBe(
-      "Medium Violet Red"
-    );
   });
 });
