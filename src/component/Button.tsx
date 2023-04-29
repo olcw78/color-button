@@ -12,6 +12,7 @@ const Button = styled.button<ButtonProps>`
   height: 40px;
   border: 0;
   border-radius: 4px;
+  margin-bottom: 20px;
 
   span {
     font-size: 16px;
@@ -25,6 +26,6 @@ const decideBackgroundColor = (
   p: Pick<ButtonProps, "isClicked" | "disabled">
 ) => {
   if (p.disabled) return "gray";
-  if (p.isClicked) return "blue";
-  return "red";
+  if (p.isClicked) return "MidnightBlue";
+  return "MediumVioletRed";
 };

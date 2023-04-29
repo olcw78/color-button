@@ -15,11 +15,12 @@ const App = () => {
         onClick={toggleButton}
         isClicked={isClicked}
         disabled={isChecked}
-        css={css`
-          margin-bottom: 20px;
-        `}
       >
-        <span>{isClicked ? "Change to red" : "Change to blue"}</span>
+        <span>
+          {isClicked
+            ? "Change to medium violet red"
+            : "Change to midnight blue"}
+        </span>
       </Button>
 
       <input
@@ -39,5 +40,5 @@ const root = css`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 1080px;
 `;
