@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { css } from "@emotion/react";
+import { useState } from "react";
+import Button from "./component/Button";
 
-function App() {
+const App = () => {
+  const [isClicked, setIsClicked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleButton = () => setIsClicked((prev) => !prev);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div css={root}>
+      <Button
+        type="button"
+        onClick={toggleButton}
+        isClicked={isClicked}
+        disabled={isChecked}
+        css={css`
+          margin-bottom: 20px;
+        `}
+      >
+        <span>{isClicked ? "Change to red" : "Change to blue"}</span>
+      </Button>
+
+      <input
+        type="checkbox"
+        id="disable-button-checkbox"
+        checked={isChecked}
+        onChange={(e) => setIsChecked(e.target.checked)}
+      />
+      <label htmlFor="disable-button-checkbox">Disable button</label>
     </div>
   );
-}
-
+};
 export default App;
+
+const root = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`;
