@@ -1,13 +1,12 @@
-import ColorButtons from "./feeature/color-buttons/ColorButtons";
 import { css } from "@emotion/react";
+import SundaesOnDemand from "./feeature/sundaes-on-demand/SundaesOnDemand";
 
-const App = () => {
-  return (
-    <div css={root}>
-      <ColorButtons />
-    </div>
-  );
-};
+const App = () => (
+  <div css={root}>
+    {/*<ColorButtons />*/}
+    <SundaesOnDemand />
+  </div>
+);
 export default App;
 
 const root = css`
@@ -16,4 +15,6 @@ const root = css`
   justify-content: center;
   align-items: center;
   min-height: 1080px;
+  background-color: teal;
+  color: ivory;
 `;

@@ -1,4 +1,10 @@
+import SummaryForm from "./page/SummaryForm";
+
 const SundaesOnDemand = () => {
-  return <div>SundaesOnDemand</div>;
+  return (
+    <div>
+      <SummaryForm />
+    </div>
+  );
 };
 export default SundaesOnDemand;
