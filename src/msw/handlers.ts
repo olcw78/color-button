@@ -9,7 +9,8 @@ interface Scoop {
   imagePath: string;
 }
 
-export const handler = [
+export const handlers = [
+  // GET/ get all scoops.
   rest.get<Scoop>(`${serverCfg.url}/scoops`, (req, res, ctx) => {
     return res(
       ctx.status(200),
