@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 
 const SummaryForm = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -22,6 +23,9 @@ const SummaryForm = () => {
           htmlFor="summary-form-checkbox"
           onMouseOver={() => setIsMouseHoverOnTermsAndConditions(true)}
           onMouseLeave={() => setIsMouseHoverOnTermsAndConditions(false)}
+          css={css`
+            color: ivory;
+          `}
         >
           I agree to Terms and Conditions
         </label>

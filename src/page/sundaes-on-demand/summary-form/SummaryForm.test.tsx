@@ -1,6 +1,16 @@
 import SummaryForm from "./SummaryForm";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { UserEvent } from "@testing-library/user-event/setup/setup";
+
+let user: UserEvent;
+
+let checkbox: HTMLInputElement;
+let orderButton: HTMLButtonElement;
+
+beforeAll(() => {
+  user = userEvent.setup();
+});
 
 describe("init", () => {
   test("renders without crashing", () => {
@@ -29,7 +39,6 @@ describe("checkbox", function () {
   });
 
   test("checking a checkbox enables button", async () => {
-    const user = userEvent.setup();
     render(<SummaryForm />);
 
     const checkbox = screen.getByRole("checkbox", {
@@ -46,7 +55,6 @@ describe("checkbox", function () {
   });
 
   test("unchecking a checkbox disables button", async () => {
-    const user = userEvent.setup();
     render(<SummaryForm />);
 
     const checkbox = screen.getByRole("checkbox", {
@@ -69,7 +77,6 @@ describe("checkbox", function () {
 
 describe("pop over", () => {
   test("popover responds to hover", async () => {
-    const user = userEvent.setup();
     render(<SummaryForm />);
 
     // popover starts out hidden

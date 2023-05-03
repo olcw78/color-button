@@ -1,6 +1,6 @@
 import { css } from "@emotion/react";
 import { useState } from "react";
-import ColorButton from "./component/ColorButton";
+import ColorButton from "../../feeature/color-buttons/component/ColorButton";
 
 const ColorButtons = () => {
   const [isClicked, setIsClicked] = useState(false);
