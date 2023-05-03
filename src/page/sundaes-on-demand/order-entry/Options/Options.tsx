@@ -1,7 +1,10 @@
 import type { FC } from "react";
 import { useEffect, useState } from "react";
-import type { Scoop } from "../../../../model/Scoop";
+import { OptionModel } from "../../../../model/OptionModel";
+import ToppingsOptions from "./ToppingsOptions";
+import { ScoopsModel } from "../../../../model/ScoopsModel";
 import ScoopOptions from "./ScoopOptions";
+import { ToppingsModel } from "../../../../model/ToppingsModel";
 
 interface OptionsProps {
   optionType: "scoops" | "toppings";
@@ -32,7 +35,7 @@ const Options: FC<OptionsProps> = ({ optionType }) => {
   // if (isLoading) return "Loading...";
   // if (error) return `Error: ${error.message}`;
 
-  const [scoops, setScoops] = useState<Readonly<Scoop[]>>([]);
+  const [options, setOptions] = useState<Readonly<OptionModel[]>>([]);
 
   useEffect(() => {
     (async () => {
@@ -43,22 +46,20 @@ const Options: FC<OptionsProps> = ({ optionType }) => {
         }
       });
 
-      const data: Readonly<Scoop[]> = await response.json();
-      setScoops(data);
+      const data: Readonly<OptionModel[]> = await response.json();
+      setOptions(data);
     })();
   }, [optionType]);
 
-  if (optionType === "toppings") {
-    return null;
-  }
-
   return (
     <ul>
-      {scoops?.map((scoop: Scoop) => (
-        <li key={scoop.name}>
-          <ScoopOptions {...scoop} />
-        </li>
-      ))}
+      {optionType === "scoops"
+        ? (options as readonly ScoopsModel[]).map((scoop) => (
+            <ScoopOptions {...scoop} />
+          ))
+        : (options as readonly ToppingsModel[]).map((topping) => (
+            <ToppingsOptions {...topping} />
+          ))}
     </ul>
   );
 };
